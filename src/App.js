@@ -5,7 +5,7 @@ import SocialPanel from './components/SocialPanel';
 import FrontPage from './pages/FrontPage';
 import Article from './pages/Article';
 import Footer from './components/Footer';
-import TestPage from './pages/TestPage';
+import TestPage from './pages/FrontPage';
 
 function App() {
   return (
@@ -16,8 +16,6 @@ function App() {
 
           <Route path='/' element={<FrontPage />} />
           <Route path='/article' element={<Article />}
-          />
-            <Route path='/test' element={<TestPage />}
           />
 
         </Routes>

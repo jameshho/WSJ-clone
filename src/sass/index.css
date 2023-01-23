@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Noto+Sans+Georgian&family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Domine&family=Questrial&family=Tinos&display=swap");
-.s-12 {
-  font-size: 12px;
-}
-
 * {
   margin: 0;
   font-family: "Noto Sans Georgian", sans-serif;
@@ -130,20 +126,17 @@
 }
 
 .frontpage-article {
-  margin: 0 auto;
+  padding-right: 20px;
+  margin-right: 0 auto;
   padding-bottom: 20px;
   border-bottom: 1px solid #d2d2d2;
-  width: 94%;
+  width: 95%;
   display: flex;
   flex-direction: column;
 }
 
 .frontpage-article-title {
   font-size: 12px;
-}
-
-.frontpage-article-img {
-  max-width: 200px;
 }
 
 .timer-container {
@@ -765,12 +758,15 @@
   margin: 0;
   padding: 0;
   margin: 10px;
+}
+
+.top-main-subcontainer {
   border-bottom: grey 1px solid;
 }
 
 .market-main-subcontainer,
 .top-second-subcontainer {
-  border-bottom: 1px solid #D2D2D2;
+  border-bottom: 1px solid #d2d2d2;
 }
 
 .market-main-container {
@@ -805,7 +801,7 @@
   height: 100px;
   flex-wrap: wrap;
   align-items: flex-start;
-  border-left: 1px solid #D2D2D2;
+  border-left: 1px solid blue;
 }
 
 .third-main div {
@@ -830,7 +826,7 @@
     width: 600px;
   }
   .subcontainer-article-container {
-    max-width: 50%;
+    max-width: 48%;
     border-right: 1px solid #d2d2d2;
     margin: 0;
     flex-grow: 1;

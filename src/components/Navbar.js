@@ -22,8 +22,6 @@ const Navbar = () => {
             <div className='navbar'>
                 {Object.entries(data).map(([navIndex, value], index) => <NavIndex id={index} navIndex={navIndex} value={value} />)}
 
-
-
             </div>
             
         </div>
