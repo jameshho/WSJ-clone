@@ -8,7 +8,7 @@ const BottomRightCard = ({num}) => {
         <div className="popular-news-container">
             <h3 className='popular-news-number'>{num+"."}</h3>
             <p className='article-right-title'>{title}</p>
-            <img className='article-right-img' src='../images/article-right-1.jfif' />
+            <img className='article-right-img' src='../images/news-img/2-biden.jfif' />
         </div>
     )
 }
