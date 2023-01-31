@@ -4,15 +4,16 @@ import { useState } from 'react'
 
 const NavIndex = ({ navIndex, value }) => {
     const [disState, setDisState] = React.useState(false)
-    const handleMouse = () => setDisState(p => !p)
 
 
     return (
         <div>
 
             <div
-                onMouseEnter={handleMouse}
-                onMouseLeave={handleMouse}
+                onMouseEnter={()=>setDisState(true)}
+                onMouseLeave={()=>setDisState(false)}
+                onWheel={()=>setDisState(false)}
+
                 className='index-label'
             >
               

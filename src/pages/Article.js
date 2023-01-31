@@ -72,7 +72,7 @@ const Article = () => {
             <BottomCard />
 
           </div>
-        </div>s
+        </div>
         <div className='show-convo-container'>
 
           <p className='show-convo'>SHOW CONVERSATION (185) &#709; </p>
