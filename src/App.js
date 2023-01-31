@@ -6,21 +6,37 @@ import FrontPage from './pages/FrontPage';
 import Article from './pages/Article';
 import Footer from './components/Footer';
 import TestPage from './pages/FrontPage';
+import ArticleDetail from './pages/ArticleDetail';
+import { NewsContextProvider } from './context/NewsContext';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
   return (
     <div>
-      <Navbar />
+
       <BrowserRouter>
-        <Routes>
+        <NewsContextProvider>
+          <AuthContextProvider>
 
-          <Route path='/' element={<FrontPage />} />
-          <Route path='/article' element={<Article />}
-          />
+            <Navbar />
 
-        </Routes>
+            <Routes>
+
+              <Route path='/' element={<FrontPage />} />
+              <Route path='/article' element={<Article />} />
+              <Route path='/signin' element={<SignIn />} />
+              <Route path='/signup' element={<SignUp />} />
+
+              <Route path="/article/:id" element={<ArticleDetail />} />
+
+
+            </Routes>
+            <Footer />
+          </AuthContextProvider>
+        </NewsContextProvider>
       </BrowserRouter>
-      <Footer />
 
     </div>
   );

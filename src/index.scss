@@ -1138,3 +1138,23 @@ $blue-hover: #0839b5;
 }
 
 //end of front page
+
+
+//sign in page
+.signin-container{
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.signin-form{
+    width: 600px;
+    height: 200px;
+    margin:20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}

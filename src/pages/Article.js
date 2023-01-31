@@ -7,19 +7,26 @@ import SocialPanel from '../components/SocialPanel'
 
 
 const BottomCard = () => {
+  const randomNumber = +(Math.random()*9).toFixed(0)
   return (
     <div className='bottom-grid-card'>
-      <img src='../images/news-img/4-google.jfif' className='bottom-card-img' />
-      <p className='bottom-grid-card-text'>Life After a Layoff: Assessing the Horizon</p>
+      <img src={`../images/news-img/${dataArticle[randomNumber].img}`} className='bottom-card-img' />
+      <p className='bottom-grid-card-text'>{dataArticle[randomNumber].title}</p>
+
+      {/* <img src='../images/news-img/4-google.jfif' className='bottom-card-img' />
+      <p className='bottom-grid-card-text'>Life After a Layoff: Assessing the Horizon</p> */}
     </div>
   )
 }
 
-const Article = () => {
+const Article = (props) => {
   const theTag = "TECH"
-  const { img, department, title, snippet, writer, date, context } = dataArticle[0]
-  const articleTitle = ""
-  const articleSnippet = ''
+  const articleNumber = props.articleNumber || 1008;
+  const { img, department, title, snippet, writer, date, context } = dataArticle.find((i) => i.id == articleNumber)
+
+  // const { img, department, title, snippet, writer, date, context } = dataArticle[0]
+
+  // const { img, department, title, snippet, writer, date, context } = dataArticle[0]
   // const artic
   return (
     <div className='fixed-article-container'>

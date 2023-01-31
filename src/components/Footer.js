@@ -30,8 +30,8 @@ const Footer = () => {
             </div>
             <div className='footer-list-outer'>
                 <div className="footer-list-container">
-                    {dataFooterList.map(i => {
-                        return <div>{i.map(u => <p>{u}</p>)}</div>
+                    {dataFooterList.map((i) => {
+                        return <div>{i.map((u,index) => <p key={index}>{u}</p>)}</div>
                     })}
                 </div>
             </div>

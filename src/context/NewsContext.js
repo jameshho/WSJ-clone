@@ -1,35 +1,24 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useContext } from 'react'
+// import dataArticle from '../dataSet/dataArticle'
 
-export const NewsContext = createContext()
+const NewsContext = createContext()
 
-// export const workoutsReducer = (state, action) => {
-//   switch (action.type) {
-//     case 'SET_WORKOUTS':
-//       return { 
-//         workouts: action.payload 
-//       }
-//     case 'CREATE_WORKOUT':
-//       return { 
-//         workouts: [action.payload, ...state.workouts] 
-//       }
-//     case 'DELETE_WORKOUT':
-//       return { 
-//         workouts: state.workouts.filter(w => w._id !== action.payload._id) 
-//       }
-//     default:
-//       return state
-//   }
-// }
+
 
 export const NewsContextProvider = ({ children }) => {
 //   const [state, dispatch] = useReducer(workoutsReducer, { 
 //     workouts: null
 //   })
+  // const dataArticle = dataArticle
   
   return (
     // to pass in below
+    //dataArticle is an array of objects
     <NewsContext.Provider value={{ }}>
       { children }
     </NewsContext.Provider>
   )
+}
+export const UseNewsContext = ()=>{
+  return useContext(NewsContext)
 }
