@@ -14,7 +14,6 @@ import { AuthContextProvider } from './context/AuthContext';
 import Account from './pages/Account';
 import ProtectedRoute from './components/ProtectedRoute';
 import TryArticle from './pages/TryArticle';
-import TestUploadForm from './pages/TestUploadForm';
 import TestShowArticle from './pages/TestShowArticle';
 
 
@@ -36,7 +35,6 @@ function App() {
               <Route path='/signup' element={<SignUp />} />
               <Route path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
               <Route path="/tryarticle" element={<TryArticle/>} />
-              <Route path="/testuploadform" element={<TestUploadForm/>} />
               <Route path="/testshowarticle" element={<TestShowArticle/>} />
 
 

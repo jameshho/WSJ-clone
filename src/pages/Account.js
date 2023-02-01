@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { UserAuth } from '../context/AuthContext'
+import { UserAuth } from '../context/AuthContext';
 import { listAll, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 import { storage } from '../firebase';
@@ -14,29 +14,19 @@ const Account = () => {
     const [imageURL, setImageURL] = useState(null)
 
     const [formData, setFormData] = useState({
-        img: 'img.pg',
+        img: 'img.png',
         department: 'department',
         title: 'title',
         snippet: 'snippet',
-        timelength: 'timelength',
+        timelength: 8,
         writerOne: 'writerOne',
-        writerTwo: 'writerTwo',
-        context: 'writerTwo'
+        writerTwo: '',
+        content: 'writerTwo'
 
 
     })
     const usersCollectionRef = collection(db, "article")
 
-    const uploadImage = () => {
-        if (!imageUpload) return;
-
-        const imageRef = ref(storage, `articleImages/${imageUpload.name}`);
-        uploadBytes(imageRef, imageUpload).then((snapshot) => {
-            alert('image-uploaded')
-            setImageUpload(null)
-        }).catch((er) => console.log(er))
-
-    }
 
     const handleChange = (e) => {
         //e may be async
@@ -53,42 +43,48 @@ const Account = () => {
         }
     }
 
+    //beginning of testing
+    const setImageFormData = (imgFileName) => {
+        setFormData((prevFormData) => {
+            return { ...prevFormData, img: imgFileName || "" }
+        })
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!imageUpload) return;
         try {
+            const imageRef = ref(storage, `articleImages/${imageUpload.name}`);
+            const snapshot = await uploadBytes(imageRef, imageUpload)
             await addDoc(usersCollectionRef, formData)
-            console.log('task complete');
-         
-            alert('task complete!')
+            
 
+            setImageUpload(null)
+            setFormData(prev=>{
+                return {...prev,
+                writerTwo:"",
+                content:""}
+            })
+            // await alert('task complete!')
 
         } catch (error) {
-            console.log('task fail')
+            console.log('task fail :', error)
         }
 
     }
+
+
     return (
 
         <div className='account-container'>
+            <h1>This is your account email</h1>
 
             <div>{(user) && user.providerData[0].email}</div>
+            <button onClick={logout}>Sign Out</button>
+
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={formData.title}
-                    onChange={handleChange}
-                    name="title"
-                    placeholder='title'
-                    required
-                />
-                <input
-                    type="text"
-                    value={formData.img}
-                    onChange={handleChange}
-                    name="img"
-                    placeholder='img'
-                    required
-                />
+
+                <label>Department</label>
+
                 <input
                     type="text"
                     value={formData.department}
@@ -97,7 +93,47 @@ const Account = () => {
                     placeholder='department'
                     required
                 />
+                <label>Time</label>
+
                 <input
+                    type="number"
+                    value={formData.timelength}
+                    onChange={handleChange}
+                    name="timelength"
+                    placeholder='timelength'
+                    required
+                />
+                <label>Writer</label>
+                <div className='writers'>
+
+                    <input
+                        type="text"
+                        value={formData.writerOne}
+                        onChange={handleChange}
+                        name="writerOne"
+                        placeholder='writerOne'
+                        required
+                    />
+                    <input
+                        type="text"
+                        value={formData.writerTwo}
+                        onChange={handleChange}
+                        name="writerTwo"
+                        placeholder='writerTwo'
+                    />
+                </div>
+                <label>Title</label>
+                <textarea
+                    type="text"
+                    value={formData.title}
+                    onChange={handleChange}
+                    name="title"
+                    placeholder='title'
+                    required
+                />
+                <label>Snippet</label>
+
+                <textarea
                     type="text"
                     value={formData.snippet}
                     onChange={handleChange}
@@ -105,40 +141,33 @@ const Account = () => {
                     placeholder='snippet'
                     required
                 />
-                <input
-                    type="text"
-                    value={formData.timelength}
-                    onChange={handleChange}
-                    name="timelength"
-                    placeholder='timelength'
-                    required
-                />
-                <input
-                    type="text"
-                    value={formData.writerOne}
-                    onChange={handleChange}
-                    name="writerOne"
-                    placeholder='writerOne'
-                    required
-                />
-                <input
-                    type="text"
-                    value={formData.writerTwo}
-                    onChange={handleChange}
-                    name="writerTwo"
-                    placeholder='writerTwo'
-                />
+                <label>Content</label>
+
                 <textarea
-                    value={formData.context}
-                    placeholder="context"
-                    name='context'
+                    value={formData.content}
+                    placeholder="content"
+                    name='content'
                     onChange={handleChange}
+                    wrap="soft"
+                    rows="12"
+                    cols="10"
                     required
                 />
                 <input
                     type="file"
-                    onChange={event => { setImageUpload(event.target.files[0] || "") }}
+                    onChange={event => {
+                        setImageUpload(event.target.files[0])
+                        setImageFormData(event.target.files[0].name)
+                    }}
                     required />
+                <input
+                    type="text"
+                    value={formData.img}
+                    onChange={() => { }}
+                    name="img"
+                    placeholder='img'
+                    required
+                />
 
                 <button>Submit</button>
             </form>

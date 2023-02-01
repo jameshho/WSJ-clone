@@ -7,14 +7,15 @@ import { UserAuth } from '../context/AuthContext'
 
 const Navbar = () => {
     const navigate = useNavigate()
-    const { user } = UserAuth()
+    const { user,logout } = UserAuth()
     return (
         <div>
             <div className="title">
                 <img src='../images/wsj.icon.png' className='logo' onClick={() => navigate('/')} />
 
-                {(user) ? <div onClick={() => navigate('/account')}>{`Welcome back: ${user.email}`}</div> : <div onClick={() => navigate('/signin')}
+                {(user) ? (<div><div onClick={() => navigate('/account')}>{`Welcome back: ${user.email}`}</div>  <button onClick={logout}>Sign Out</button></div>) : <div onClick={() => navigate('/signin')}
                     >sign up</div>}
+                    
             </div>
             <div className='title-detail'>
                 <p>English Edition ▾</p>
