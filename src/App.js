@@ -12,6 +12,9 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import { AuthContextProvider } from './context/AuthContext';
 import Account from './pages/Account';
+import ProtectedRoute from './components/ProtectedRoute';
+import TryArticle from './pages/TryArticle';
+
 
 function App() {
   return (
@@ -29,7 +32,8 @@ function App() {
               <Route path='/article' element={<Article />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
-              <Route path='/account' element={<Account />} />
+              <Route path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
+              <Route path="/tryarticle" element={<TryArticle/>} />
 
 
               <Route path="/article/:id" element={<ArticleDetail />} />

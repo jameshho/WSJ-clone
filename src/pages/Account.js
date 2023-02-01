@@ -15,12 +15,10 @@ const Account = () => {
         timelength: '',
         writerOne: '',
         writerTwo: '',
-
         context: ''
     })
 
     const [imageUpload, setImageUpload] = useState(null)
-
     const  [imageURL, setImageURL ] = useState(null)
     const [refImage, setRefImage] = useState('dog1.png')
 
@@ -43,7 +41,7 @@ const Account = () => {
             .catch((e) => {
                 console.log('Problem getting download url')
             })
-    }, [refImage])
+    }, [])
     const handleChange = (e) => {
         //e may be async
         e.preventDefault()

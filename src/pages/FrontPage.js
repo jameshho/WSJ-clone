@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import ArticleRight from '../components/ArticleRight'
 import FrontPageArticle from '../components/FrontPageArticle'
 import dataArticle from '../dataSet/dataArticle'
 
 
 const FrontSecondCard = (prop) => {
+    const navigate = useNavigate()
     const {id,img,department,title,snippet,timelength,writer,date,context}= prop.article
     return (
-        <div className="front-second-card" onClick={()=>console.log(id)}>
+        <div className="front-second-card" onClick={()=>navigate(`article/${id}`)}>
             <h3>{title} 
                 </h3><p>Iste doloribus aliquam voluptas officia ipsam ut perferendis, harum voluptatibus mollitia, eos reprehenderit sequi id earum sunt vero ea aperiam! Quae, eaque.</p>
             <img src={`../images/news-img/${img}`} />
@@ -38,11 +40,7 @@ const FrontPage = () => {
                 </div>
                 <div className='top-second-subcontainer'>
                 {dataArticle.slice(4,9).map((i,index)=><FrontSecondCard  article={i} key={i.id} />)}
-                    {/* <FrontSecondCard />
-
-                    <FrontSecondCard />
-                    <FrontSecondCard />
-                    <FrontSecondCard /> */}
+                  
 
 
                 </div>
