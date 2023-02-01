@@ -7,7 +7,7 @@ import { storage } from '../firebase';
 
 import { db } from '../firebase';
 
-const Account = () => {
+const TestUploadForm = () => {
     const { user, logout } = UserAuth()
     const [imageUpload, setImageUpload] = useState(null)
 
@@ -147,4 +147,4 @@ const Account = () => {
     )
 }
 
-export default Account
+export default TestUploadForm

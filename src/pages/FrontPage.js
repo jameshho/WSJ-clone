@@ -30,13 +30,10 @@ const FrontPage = () => {
 
                 <div className='top-main-subcontainer'>
 
-
+                    
                     <FrontPageArticle article={dataArticle[7]} showImg={true}   />
                     {dataArticle.map((i,index)=><FrontPageArticle article={i} key={i.id} />)}
                 
-
-
-
                 </div>
                 <div className='top-second-subcontainer'>
                 {dataArticle.slice(4,9).map((i,index)=><FrontSecondCard  article={i} key={i.id} />)}
