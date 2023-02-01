@@ -21,6 +21,17 @@
   align-items: center;
   flex-direction: row;
   align-items: center;
+  position: relative;
+}
+.title div {
+  border: 2px solid black;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  top: 0%;
+}
+.title div:hover {
+  color: grey;
 }
 
 .title-detail {
@@ -904,4 +915,28 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.account-container {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  flex-direction: column;
+}
+.account-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  flex-direction: column;
+  color: pink;
+  min-width: 500px;
+}
+.account-container form input, .account-container form textarea {
+  margin-bottom: 20px;
+  width: 80%;
+}
+.account-container form button {
+  width: 80%;
+  background-color: #0274B6;
 }/*# sourceMappingURL=index.css.map */

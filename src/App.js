@@ -11,6 +11,7 @@ import { NewsContextProvider } from './context/NewsContext';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import { AuthContextProvider } from './context/AuthContext';
+import Account from './pages/Account';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
               <Route path='/article' element={<Article />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
+              <Route path='/account' element={<Account />} />
+
 
               <Route path="/article/:id" element={<ArticleDetail />} />
 

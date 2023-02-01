@@ -2,14 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import NavIndex from './NavIndex'
 import data from '../dataSet/indexData'
-import {  useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { UserAuth } from '../context/AuthContext'
 
 const Navbar = () => {
     const navigate = useNavigate()
+    const { user } = UserAuth()
     return (
-        <div>  
+        <div>
             <div className="title">
-            <img src='../images/wsj.icon.png' className='logo' onClick={ ()=>navigate('/')}/>
+                <img src='../images/wsj.icon.png' className='logo' onClick={() => navigate('/')} />
+
+                {(user) ? <div onClick={() => navigate('/account')}>{`Welcome back: ${user.email}`}</div> : <div onClick={() => navigate('/signin')}
+                    className='title-signup-button'>sign up</div>}
             </div>
             <div className='title-detail'>
                 <p>English Edition ▾</p>
@@ -23,7 +28,7 @@ const Navbar = () => {
                 {Object.entries(data).map(([navIndex, value], index) => <NavIndex key={index} navIndex={navIndex} value={value} />)}
 
             </div>
-            
+
         </div>
     )
 }

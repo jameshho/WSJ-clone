@@ -5,6 +5,7 @@ import { UserAuth } from '../context/AuthContext'
 const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
     const [error,setError] = useState('')
 
     
@@ -27,7 +28,8 @@ const SignUp = () => {
         <div className="signin-container">
 
             <form onSubmit={handleSubmit} className="signin-form">
-                <h1>Sign in to your account</h1>
+                <h1>Sign up to your account</h1>
+                <p>Already have an account? <Link to='/signin' style={{ color: 'blue' }}>Sign In</Link></p>
                 <input
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -39,7 +41,7 @@ const SignUp = () => {
                     placeholder="password"
                     value={password}
                 />
-                <button>Submit</button>
+                <button>Sign Up</button>
 
             </form>
         </div >

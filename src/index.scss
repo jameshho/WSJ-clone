@@ -32,8 +32,22 @@
     align-items: center;
     flex-direction: row;
     align-items: center;
+    position: relative;
 
+    div {
+        border: 2px solid black;
+        cursor: pointer;
+        position: absolute;
+        right: 5%;
+        top: 0%;
+
+        &:hover {
+            color: grey;
+        }
+    }
 }
+
+
 
 .title-detail {
     display: flex;
@@ -50,7 +64,8 @@
     padding: 0 4px;
     border-right: 1px solid grey;
     margin: 1px 0;
-    &:hover{
+
+    &:hover {
         color: black;
     }
 
@@ -505,7 +520,7 @@
 .bottom-card-img {
     height: 107px;
     width: 80%;
-    margin: 0  auto;
+    margin: 0 auto;
     margin-bottom: 8px;
 }
 
@@ -992,7 +1007,8 @@ $blue-hover: #0839b5;
 }
 
 .front-second-card {
-   cursor: pointer;
+    cursor: pointer;
+
     * {
         padding-left: 10px;
     }
@@ -1141,20 +1157,47 @@ $blue-hover: #0839b5;
 
 
 //sign in page
-.signin-container{
-display: flex;
-justify-content: center;
-align-items: center;
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
-.signin-form{
+.signin-form {
     width: 600px;
     height: 200px;
-    margin:20px 0;
+    margin: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+}
+
+
+.account-container {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    flex-direction: column;
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        flex-direction: column;
+        color: pink;
+        min-width: 500px;
+        input, textarea{
+            margin-bottom: 20px;
+            width: 80%;
+        }
+        button {
+            width: 80%;
+            background-color: #0274B6;
+        }
+    }
 
 }

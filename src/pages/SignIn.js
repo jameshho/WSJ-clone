@@ -27,7 +27,7 @@ const SignIn = () => {
 
             <form onSubmit={handleSubmit} className="signin-form">
                 <h1>Sign In to your account</h1>
-                <p>Already have an account? <Link to='/signup' style={{ color: 'blue' }}>Sign up</Link></p>
+                <p>Don't have an account? <Link to='/signup' style={{ color: 'blue' }}>Sign up</Link></p>
                 <input
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -39,7 +39,7 @@ const SignIn = () => {
                     placeholder="password"
                     value={password}
                 />
-                <button>Submit</button>
+                <button>Sign In</button>
 
             </form>
         </div >
