@@ -17,6 +17,7 @@ import TryArticle from './pages/TryArticle';
 import TestShowArticle from './pages/TestShowArticle';
 import TryNewStuff from './pages/TryNewStuff';
 import ArticleDetailFirebase from './pages/ArticleDetailFirebase';
+import ScrollToTop from './context/ScrollToTop';
 
 
 function App() {
@@ -28,25 +29,28 @@ function App() {
           <AuthContextProvider>
 
             <Navbar />
+            <ScrollToTop>
 
-            <Routes>
+              <Routes>
 
-              <Route path='/' element={<FrontPage />} />
-              <Route path='/article' element={<Article />} />
-              <Route path='/signin' element={<SignIn />} />
-              <Route path='/signup' element={<SignUp />} />
-              <Route path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
-              <Route path="/tryarticle" element={<TryArticle/>} />
-              <Route path="/testshowarticle" element={<TestShowArticle/>} />
-              <Route path="/trynewstuff" element={<TryNewStuff/>} />
-
-
-
-              <Route path="/article/:id" element={<ArticleDetail />} />
-              <Route path="/testshowarticle/:id" element={<ArticleDetailFirebase/>} />
+                <Route path='/' element={<FrontPage />} />
+                <Route path='/article' element={<Article />} />
+                <Route path='/signin' element={<SignIn />} />
+                <Route path='/signup' element={<SignUp />} />
+                <Route path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
+                <Route path="/tryarticle" element={<TryArticle />} />
+                <Route path="/testshowarticle" element={<TestShowArticle />} />
+                <Route path="/trynewstuff" element={<TryNewStuff />} />
 
 
-            </Routes>
+
+                <Route path="/article/:id" element={<ArticleDetail />} />
+                {/* <Route path="/testshowarticle/:id" element={<ArticleDetailFirebase/>} /> */}
+                <Route path="/testshowarticle/:id" element={<TestShowArticle />} />
+
+
+              </Routes>
+            </ScrollToTop>
             <Footer />
           </AuthContextProvider>
         </NewsContextProvider>

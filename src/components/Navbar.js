@@ -14,7 +14,7 @@ const Navbar = () => {
                 <img src='../images/wsj.icon.png' className='logo' onClick={() => navigate('/')} />
 
                 {(user) ? (<div><div onClick={() => navigate('/account')}>{`Welcome back: ${user.email}`}</div>  <button onClick={logout}>Sign Out</button></div>) : <div onClick={() => navigate('/signin')}
-                    >sign up</div>}
+                    >Sign In</div>}
                     
             </div>
             <div className='title-detail'>

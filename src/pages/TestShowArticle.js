@@ -5,13 +5,15 @@ import { doc, getDoc } from 'firebase/firestore';
 import BottomCard from '../components/BottomCard'
 import ArticleRight from '../components/ArticleRight'
 import SocialPanel from '../components/SocialPanel'
+import { useParams } from 'react-router-dom';
 
 
 
 const TestShowArticle = (prop) => {
-    const [singleArticle, setSingleArticle] = useState({})
+  const {id} = useParams()
 
-    const code = prop.articleNumber
+    const [singleArticle, setSingleArticle] = useState({})
+    const code = id
     const [imageURL, setImageURL] = useState(null)
 
     //testing area
@@ -32,7 +34,7 @@ const TestShowArticle = (prop) => {
 
 
     useEffect(() => {
-        fetchArticle('4OCg4yqRScVQHa6HN7Kj')
+        fetchArticle(id)
     }, [])
 
     if (!singleArticle) return (<div>Loading</div>)
@@ -50,6 +52,8 @@ const TestShowArticle = (prop) => {
         <div className='main-left'>
           <h1 className='article-title'>{title}</h1>
           <h3 className='article-snippet'>{snippet}</h3>
+          {/* <h1>HELLO</h1> */}
+
           <img src={imageURL} className='main-image' />
           <p className='photo-des'>The job reductions at Google parent Alphabet will cut across its units and regions.</p>
           <p className='photo-des'>PHOTO: DAVID PAUL MORRIS/BLOOMBERG NEWS</p>

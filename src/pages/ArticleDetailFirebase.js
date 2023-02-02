@@ -7,7 +7,9 @@ const ArticleDetailFirebase = () => {
     const {id} = useParams()
   return (
     <div> 
-    <TestShowArticle articleNumber = {"4OCg4yqRScVQHa6HN7Kj"}/>
+    {/* <TestShowArticle articleNumber = {"4OCg4yqRScVQHa6HN7Kj"}/> */}
+    <TestShowArticle articleNumber = {id}/>
+
     </div>
   )
 }

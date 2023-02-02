@@ -6,13 +6,8 @@ import { db } from '../firebase';
 
 const NewsContext = createContext()
 
-
-
 export const NewsContextProvider = ({ children }) => {
-  //   const [state, dispatch] = useReducer(workoutsReducer, { 
-  //     workouts: null
-  //   })
-  // const dataArticle = dataArticle
+
   const [articles, setArticles] = useState([])
   const [allArticlesId, setAllArticlesId] = useState([])
 
@@ -22,13 +17,15 @@ export const NewsContextProvider = ({ children }) => {
     try {
       const data = await getDocs(articlesCollectionRef)
       await data.docs.forEach((doc) => {
-        setAllArticlesId((prev) => [...prev, doc.id])
+        (allArticlesId)?setAllArticlesId((prev) => [...prev, doc.id]):
+        setAllArticlesId([doc.id])
       })
+      await setAllArticlesId((prev) => prev.sort(() => Math.random() - 0.5))
+
       await console.log(allArticlesId)
 
     } catch (er) {
       console.log(er, 'somethings wrong')
-      // console.log('somethings wrong with detchArticles')
     }
   }
 
@@ -36,6 +33,9 @@ export const NewsContextProvider = ({ children }) => {
     fetchArticles()
   }
     , [])
+  // useEffect(() => {
+  //   window.scrollTo(0, 0)
+  // }, [])
 
   return (
 
