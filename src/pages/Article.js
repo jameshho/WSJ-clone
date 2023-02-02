@@ -24,10 +24,7 @@ const Article = (props) => {
   const articleNumber = props.articleNumber || 1008;
   const { img, department, title, snippet, writer, date, context } = dataArticle.find((i) => i.id == articleNumber)
 
-  // const { img, department, title, snippet, writer, date, context } = dataArticle[0]
 
-  // const { img, department, title, snippet, writer, date, context } = dataArticle[0]
-  // const artic
   return (
     <div className='fixed-article-container'>
       <div className='position-absolute' >

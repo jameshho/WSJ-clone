@@ -15,6 +15,8 @@ import Account from './pages/Account';
 import ProtectedRoute from './components/ProtectedRoute';
 import TryArticle from './pages/TryArticle';
 import TestShowArticle from './pages/TestShowArticle';
+import TryNewStuff from './pages/TryNewStuff';
+import ArticleDetailFirebase from './pages/ArticleDetailFirebase';
 
 
 function App() {
@@ -36,10 +38,12 @@ function App() {
               <Route path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
               <Route path="/tryarticle" element={<TryArticle/>} />
               <Route path="/testshowarticle" element={<TestShowArticle/>} />
+              <Route path="/trynewstuff" element={<TryNewStuff/>} />
 
 
 
               <Route path="/article/:id" element={<ArticleDetail />} />
+              <Route path="/testshowarticle/:id" element={<ArticleDetailFirebase/>} />
 
 
             </Routes>

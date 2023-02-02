@@ -21,10 +21,10 @@ export const NewsContextProvider = ({ children }) => {
   async function fetchArticles() {
     try {
       const data = await getDocs(articlesCollectionRef)
-      data.docs.forEach((doc) => {
+      await data.docs.forEach((doc) => {
         setAllArticlesId((prev) => [...prev, doc.id])
       })
-      console.log(allArticlesId)
+      await console.log(allArticlesId)
 
     } catch (er) {
       console.log(er, 'somethings wrong')
@@ -38,8 +38,7 @@ export const NewsContextProvider = ({ children }) => {
     , [])
 
   return (
-    // to pass in below
-    //dataArticle is an array of objects
+
     <NewsContext.Provider value={{ allArticlesId }}>
       {children}
     </NewsContext.Provider>
