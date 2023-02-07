@@ -12,9 +12,18 @@ const Navbar = () => {
         <div>
             <div className="title">
                 <img src='../images/wsj.icon.png' className='logo' onClick={() => navigate('/')} />
+                <h1 className='title-journey'>JOURNEY</h1>
 
-                {(user) ? (<div><div onClick={() => navigate('/account')}>{`Welcome back: ${user.email}`}</div>  <button onClick={logout}>Sign Out</button></div>) : <div onClick={() => navigate('/signin')}
-                    >Sign In</div>}
+                {/* {(user) ? (<div><div onClick={() => navigate('/account')}>{`Welcome back: ${user.email}`}</div>  <button onClick={logout}>Sign Out</button></div>) : <div onClick={() => navigate('/signin')}
+                    >Sign In</div>} */}
+{/* modified version */}
+
+     {(user) ? (<div><div onClick={() => navigate('/account')}>{`Welcome back: Jimmy`}</div>  <p onClick={logout}>| Sign Out</p></div>) : <div onClick={() => navigate('/signin')}
+                    >Sign In | Subscribe</div>}
+
+
+
+
                     
             </div>
             <div className='title-detail'>

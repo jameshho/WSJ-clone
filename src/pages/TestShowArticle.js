@@ -1,127 +1,105 @@
-import React, { useEffect, useState } from 'react'
-import { ref, getDownloadURL } from 'firebase/storage';
-import { storage, db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
 import BottomCard from '../components/BottomCard'
 import ArticleRight from '../components/ArticleRight'
 import SocialPanel from '../components/SocialPanel'
 import { useParams } from 'react-router-dom';
+import { useArticle } from '../hooks/useArticle';
+import { UseNewsContext } from '../context/NewsContext';
 
 
 
-const TestShowArticle = (prop) => {
-  const {id} = useParams()
-
-    const [singleArticle, setSingleArticle] = useState({})
-    const code = id
-    const [imageURL, setImageURL] = useState(null)
-
-    //testing area
-
-    async function fetchArticle(articleId) {
-        try {
-            const docRef = doc(db, 'article', articleId)
-            const data = await getDoc(docRef)
-            const finalSingle = data.data()
-            setSingleArticle(finalSingle)
-
-            const imageURL = await getDownloadURL(ref(storage, `articleImages/${finalSingle.img}`))
-            setImageURL(imageURL)
-        } catch (e) {
-            console.error('Error fetching article: ', e)
-        }
-    }
+const TestShowArticle = () => {
 
 
-    useEffect(() => {
-        fetchArticle(id)
-    }, [])
+  const { allArticlesId } = UseNewsContext()
 
-    if (!singleArticle) return (<div>Loading</div>)
-    const { img, department, title, snippet, writerOne, writerTwo, content } = singleArticle
+  //new part
+  const { id } = useParams();
+  const { singleArticle, imageURL } = useArticle(id);
 
-
-    // <img src={imageURL} />
-
-
-    return (
-        <div className='fixed-article-container'>
-        <div className='position-absolute' >
-          <SocialPanel />
-        </div>
-        <div className='main-left'>
-          <h1 className='article-title'>{title}</h1>
-          <h3 className='article-snippet'>{snippet}</h3>
-          {/* <h1>HELLO</h1> */}
-
-          <img src={imageURL} className='main-image' />
-          <p className='photo-des'>The job reductions at Google parent Alphabet will cut across its units and regions.</p>
-          <p className='photo-des'>PHOTO: DAVID PAUL MORRIS/BLOOMBERG NEWS</p>
-          <div className='article-center-block'>
-
-            <p>{`By ${writerOne} ${(writerTwo) && " and " + writerTwo}`}</p>
-            
-            {/* <p>{`Updated ${date}`}</p> */}
-            <p>Updated Jan. 20, 2023 2:44 pm ET</p>
-            <div className="article-save-icons">
-              <p>SAVE</p>
-              <p>PRINT</p>
-              <p>TEXT</p>
-              <p>COMMENT</p>
-            </div>
-  
-  
-  
-            <div className='article-listen-bar'>
-              <div className='article-listen-icon'>▶</div>
-              <p className='article-listen-title'> Listen to article </p>
-              <p className='article-listen-time'>(7 minutes)</p>
-              <p className='article-listen-queue'>Queue</p>
-            </div>
-  
-            <div className='main-content'>
-              {(content) && content.split('\\n').map((i,index) => <p key = {index}>{i}</p>)}
+  if (!singleArticle) return (<div>Loading</div>)
+  const { img, department, title, snippet, writerOne, writerTwo, content } = singleArticle;
 
 
-  
-            </div>
-  
-            <div className='main-left-bottom'>
-  
-              <p className="bottom-title">Rising Wave of Layoffs</p>
-              <p className="bottom-des">Advice and insights as companies cut back, selected by the editors</p>
-            </div>
-            <div className='bottom-cq-container'>
-              <BottomCard />
-              <BottomCard />
-              <BottomCard />
-              <BottomCard />
-              <BottomCard />
-              <BottomCard />
-              <BottomCard />
-              <BottomCard />
-  
-            </div>
-          </div>
-          <div className='show-convo-container'>
-  
-            <p className='show-convo'>SHOW CONVERSATION (185) &#709; </p>
-          </div>
-  
-        </div>
-  
-  
-  
-  
-        <div className='display-bottom-g'>
-          <ArticleRight />
-          <ArticleRight />
-  
-        </div>
+  return (
+    <div className='fixed-article-container'>
+      <div className='position-absolute' >
+        <SocialPanel />
       </div>
-  
-  
-    )
+      <div className='main-left'>
+        <h1 className='article-title'>{title}</h1>
+        <h3 className='article-snippet'>{snippet}</h3>
+        {/* <h1>HELLO</h1> */}
+
+        <img src={imageURL} className='main-image' />
+        <p className='photo-des'>President Biden, who spoke Monday the White House, has seen his approval rating hampered by high prices for energy, among other factors.</p>
+        <p className='photo-des'>PHOTO: ALEX BRANDON/ASSOCIATED PRESS</p>
+        <div className='article-center-block'>
+
+          {/* <p>{`By ${writerOne} ${(writerTwo) && " and " + writerTwo}`}</p> */}
+<p className='article-author'>By <span>Andrew Restuccia</span> and <span>Collin Eaton</span></p>
+          {/* <p>{`Updated ${date}`}</p> */}
+          <p>Updated Oct. 31, 2022 6:00 pm ET</p>
+          {/* <div className="article-save-icons">
+            <p>SAVE</p>
+            <p>PRINT</p>
+            <p>TEXT</p>
+            <p>COMMENT</p>
+          </div> */}
+          <img src="/images/save-icons.png" className='save-icons' />
+
+
+
+          <div className='article-listen-bar'>
+            <div className='article-listen-icon'>▶</div>
+            <p className='article-listen-title'> Listen to article </p>
+            <p className='article-listen-time'>(7 minutes)</p>
+            <p className='article-listen-queue'>Queue</p>
+          </div>
+
+          <div className='main-content'>
+            {(content) && content.split('\\n').map((i, index) => <p key={index}>{i}</p>)}
+
+
+
+          </div>
+
+          <div className='main-left-bottom'>
+
+            <p className="bottom-title">Rising Wave of Layoffs</p>
+            <p className="bottom-des">Advice and insights as companies cut back, selected by the editors</p>
+          </div>
+          <div className='bottom-cq-container'>
+            <BottomCard />
+            <BottomCard />
+            <BottomCard />
+            <BottomCard />
+            <BottomCard />
+            <BottomCard />
+            <BottomCard />
+            <BottomCard />
+
+          </div>
+        </div>
+        <div className='show-convo-container'>
+
+          <p className='show-convo'>SHOW CONVERSATION (185) &#709; </p>
+        </div>
+
+      </div>
+
+
+
+
+      <div className='display-bottom-g'>
+        <ArticleRight article={allArticlesId.slice(13, 18)} headline={'MOST POPULAR NEWS'} />
+        <ArticleRight article={allArticlesId.slice(1, 6)} headline={"TOP STORIES OF THE DAY"} />
+
+
+      </div>
+    </div>
+
+
+  )
 }
 
 export default TestShowArticle

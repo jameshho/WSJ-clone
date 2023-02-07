@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import ArticleRight from '../components/ArticleRight'
-import {FrontPageArticle ,FrontSecondCard} from '../components/FrontPageArticle'
+import { FrontPageArticle, FrontSecondCard } from '../components/FrontPageArticle'
 import { UseNewsContext } from '../context/NewsContext'
 import dataArticle from '../dataSet/dataArticle'
 
@@ -23,8 +23,8 @@ import dataArticle from '../dataSet/dataArticle'
 // }
 
 const FrontPage = () => {
-    const {allArticlesId} = UseNewsContext()
-    
+    const { allArticlesId } = UseNewsContext()
+
     return (
         <div className='frontpage-container'>
 
@@ -32,23 +32,22 @@ const FrontPage = () => {
 
                 <div className='top-main-subcontainer'>
 
-                    
-                    <FrontPageArticle article={allArticlesId[0]} showImg={true}   />
-                    {allArticlesId.map((i,index)=><FrontPageArticle article={i} key={i.id} />)}
-                
+
+                    <FrontPageArticle article={allArticlesId[0]} showImg={true} />
+                    {allArticlesId.slice(1, 9).map((i, index) => <FrontPageArticle article={i} key={i.id} />)}
+
                 </div>
                 <div className='top-second-subcontainer'>
-                {allArticlesId.slice(4,8).map((i,index)=><FrontSecondCard  article={i} key={i.id} />)}
-                  
+                    {allArticlesId.slice(9, 13).map((i, index) => <FrontSecondCard article={i} key={i.id} />)}
+
 
 
                 </div>
 
             </div>
             <div className="right-article-col">
-                <ArticleRight />
-
-                <ArticleRight />
+                <ArticleRight article={allArticlesId.slice(13, 18)} headline={'MOST POPULAR NEWS'}/>
+                <ArticleRight article={allArticlesId.slice(1, 6)}  headline={"TOP STORIES OF THE DAY"} />
             </div>
         </div>
     )

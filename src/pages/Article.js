@@ -34,16 +34,17 @@ const Article = (props) => {
         <h1 className='article-title'>{title}</h1>
         <h3 className='article-snippet'>{snippet}</h3>
         <img src={`../images/news-img/${img}`} className='main-image' />
-        <p className='photo-des'>The job reductions at Google parent Alphabet will cut across its units and regions.</p>
-        <p className='photo-des'>PHOTO: DAVID PAUL MORRIS/BLOOMBERG NEWS</p>
+        <p className='photo-des'>President Biden, who spoke Monday the White House, has seen his approval rating hampered by high prices for energy, among other factors.</p>
+        <p className='photo-des'>PHOTO: ALEX BRANDON/ASSOCIATED PRESS</p>
         <div className='article-center-block'>
           <p>{`By ${writer[0]}${(writer[1]) && " and " + writer[1]}`}</p>
-          <p>{`Updated ${date}`}</p>
+          {/* <p>{`Updated ${date}`}</p> */}
+          <p>Updated Oct. 31, 2022 6:00 pm ET</p>
           <div className="article-save-icons">
             <p>SAVE</p>
             <p>PRINT</p>
             <p>TEXT</p>
-            <p>COMMENT</p>
+            <p>COMMENTS</p>
           </div>
 
 

@@ -1,4 +1,4 @@
-import './index.css'
+import './index.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import SocialPanel from './components/SocialPanel';
@@ -12,7 +12,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import { AuthContextProvider } from './context/AuthContext';
 import Account from './pages/Account';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './hooks/ProtectedRoute';
 import TryArticle from './pages/TryArticle';
 import TestShowArticle from './pages/TestShowArticle';
 import TryNewStuff from './pages/TryNewStuff';

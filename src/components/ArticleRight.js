@@ -1,36 +1,40 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UseNewsContext } from '../context/NewsContext';
 import dataArticle from '../dataSet/dataArticle'
+import { useArticle } from '../hooks/useArticle';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { db } from '../firebase';
 
-const title = "China's Global Mega-Projects Are Falling Apart"
+//new part
 
 
+//based on 5 ids, get an array of 5 url and 5 titles
 
-const BottomRightCard = ({ num, article }) => {
+
+const BottomRightCard = ({ article ,num}) => {
     const navigate = useNavigate()
+    const { singleArticle, imageURL } = useArticle(article);
+    const {title} = singleArticle
     return (
-        <div className="popular-news-container" onClick={() => navigate(`/article/${article.id}`)}>
+        <div className="popular-news-container" onClick={() => navigate(`/testshowarticle/${article}`)}>
             <h3 className='popular-news-number'>{num + "."}</h3>
-            <p className='article-right-title'>{article.title}</p>
-            <img className='article-right-img' src={`../images/news-img/${article.img}`} />
+            <p className='article-right-title'>{title}</p>
+            <img className='article-right-img' src={imageURL} />
         </div>
-    )
+     )
 }
 
 
-const ArticleRight = () => {
-    // const rightArticleHeading = 'MOST POPULAR OPINION'
-    const rightArticleHeading = 'MOST POPULAR NEWS'
-
+const ArticleRight = ({article,headline}) => {
+    
+    const rightArticleHeading = headline
+    if(!article) return <div>Loading</div>
     return (
         <div className='article-right-container'>
             <h2 className='article-right-title'>{rightArticleHeading}</h2>
-            {dataArticle.slice(5, 10).map((i, index) => <BottomRightCard key={index} num={index + 1} article={i} />)}
-            {/* <BottomRightCard num={1} />
-            <BottomRightCard num={2} />
-            <BottomRightCard num={3} />
-            <BottomRightCard num={4} />
-            <BottomRightCard num={5} /> */}
+            {article.map((i, index) => <BottomRightCard key={index} article={i} num={index+1}/>)}
+
 
         </div>
     )

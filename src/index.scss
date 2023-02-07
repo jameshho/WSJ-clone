@@ -34,16 +34,31 @@
     align-items: center;
     position: relative;
 
+    .title-journey{
+        position: absolute;
+        border: black solid 2px;
+        font-size: 2.3rem;
+        top:24.5%;
+        left: 56%;
+        background-color: white;
+        rotate: 10deg;
+        font-family: hel;
+        padding: 0 5px;
+        background-color: yellow;
+    }
+    p{
+        margin-left: 5px;
+    }
     &>div {
         // border: 2px solid black;
-        text-decoration: underline solid 1px;
+        // text-decoration: underline solid 1px;
         cursor: pointer;
         position: absolute;
-        right: 5%;
-        top: 0%;
+        right: 4.4%;
+        top: 4%;
         display: flex;
         align-items: flex-end;
-        
+
 
         &:hover {
             color: grey;
@@ -257,6 +272,8 @@
     border-radius: 2px;
     transition: width 0.8s;
     border: 1px solid $primarycolor;
+    border: 1px solid rgb(174, 173, 173);
+
 
     overflow: hidden;
     display: grid;
@@ -360,12 +377,13 @@
 
 .position-absolute {
     position: absolute;
-    left: 0px;
+    left: 150px;
     top: 0px;
 }
 
 .article-title {
     // font-family: 'Tinos', serif;
+    margin-left: 87px;
     font-family: Georgia, 'Times New Roman', Times, serif, serif;
 
     font-weight: 700;
@@ -383,13 +401,18 @@
 }
 
 .main-image {
-    width: 500px;
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+    object-position: bottom;
+
 }
 
 .photo-des {
     font-size: 12px;
     color: #333333;
     margin: 0 auto;
+    width: 700px;
 
 }
 
@@ -411,6 +434,16 @@
 
 }
 
+.article-author{
+    font-style:italic ;
+    font-size: 1rem;
+    font-weight: 600;
+    span{
+        text-decoration: underline;
+        color: rgb(26, 26, 229);
+    }
+}
+
 .article-save-icons {
     display: flex;
     // flex-direction: row;
@@ -419,6 +452,9 @@
     margin: 10px 0px;
 
     height: 20px;
+}
+.save-icons{
+    height: 40px;
 }
 
 .article-save-icons * {
@@ -1159,25 +1195,137 @@ $blue-hover: #0839b5;
 
 //end of front page
 
+.signin {
+    background-color: $greyborder;
+    height: 650px;
 
-//sign in page
-.signin-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    //sign in page
+    .signin-container {
+        margin-top: 20px;
+        height: 600px;
+  
+        width: 460px;
+        background-color: white;
+
+
+
+        .signin-form {
+            &>* {
+                width: 80%;
+
+            }
+
+            width: 80%;
+            margin-top:40px;
+            margin-left: 10%;
+            height: 500px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+
+            .signin-text {
+                margin-left: 64%;
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+                font-weight: 200;
+            }
+
+            input {
+                // line-height: 20px;
+                padding: 5px;
+                border: rgb(207, 207, 207) 1px solid;
+                border-radius: 2px;
+            }
+
+            label {
+                font-size: 0.7rem;
+                color: grey;
+                margin-bottom: 0.2rem;
+            }
+
+
+            .forget-password {
+                position: relative;
+                border-bottom: grey solid 1px;
+                padding-bottom: 40px;
+                margin-bottom: 15px;
+
+                p:first-child {
+                    font-size: 0.8rem;
+
+                    span {
+                        text-decoration: underline;
+                        color: blue;
+                    }
+                }
+
+            }
+        }
+
+        .social-signin-text {
+            position: absolute;
+            top: 46px;
+            left: 31.5%;
+            background-color: white;
+            padding: 0 10px;
+            font-size: 0.9rem;
+
+        }
+
+        .social-signin {
+            height: 2.9rem;
+            padding: 0.5rem 0;
+            display: flex;
+
+            img {
+                width: 29px;
+                border: grey 1px solid;
+                padding: 4px;
+            }
+            button{
+                width: 100%;
+                background-color: transparent;
+                border: grey 1px solid;
+                border-left: none;
+
+            }
+
+        }
+        .button-signin {
+            background-color: transparent;
+            border: grey solid 1px;
+            line-height: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 20px;
+            border-radius: 2px;
+        }
+        .first{
+            background-color: #0274B6;
+            color: white;
+        }
+
+        .new-to-wsj {
+            border-top: grey 1px solid;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+
+            p{
+                font-size: 1rem;
+                font-weight: 200;
+                margin-top: 14px;
+            }
+      
+        }
+  
+    }
 
 }
 
-.signin-form {
-    width: 600px;
-    height: 200px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
 
 
 .account-container {
@@ -1185,15 +1333,18 @@ $blue-hover: #0839b5;
     align-items: center;
     margin-top: 5px;
     flex-direction: column;
-    .writers{
+
+    .writers {
         display: flex;
         justify-content: space-between;
         width: 80%;
-        input:first-child{
+
+        input:first-child {
             min-width: 30%;
             margin-right: 10%;
         }
     }
+
     form {
         display: flex;
         justify-content: center;
@@ -1201,26 +1352,32 @@ $blue-hover: #0839b5;
         margin-top: 5px;
         flex-direction: column;
         min-width: 500px;
-        input, textarea{
+
+        input,
+        textarea {
             margin-bottom: 20px;
             width: 80%;
         }
-        textarea,input{
+
+        textarea,
+        input {
             border-radius: 0.2px;
             padding: 3px;
             border: black solid 0.5px;
         }
+
         button {
             width: 50%;
             min-height: 50px;
             border-radius: 9px;
-            border: mix(#1597e3,white,40%) 2px solid;
+            border: mix(#1597e3, white, 40%) 2px solid;
             background-color: #1597e3;
             font-weight: bold;
             font-size: 1.2rem;
             color: white;
-            &:hover{
-                background-color: mix(#1597e3,white,80%);
+
+            &:hover {
+                background-color: mix(#1597e3, white, 80%);
             }
         }
     }

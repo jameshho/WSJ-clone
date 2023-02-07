@@ -30,8 +30,8 @@ const Footer = () => {
             </div>
             <div className='footer-list-outer'>
                 <div className="footer-list-container">
-                    {dataFooterList.map((i) => {
-                        return <div>{i.map((u,index) => <p key={index}>{u}</p>)}</div>
+                    {dataFooterList.map((i,index) => {
+                        return <div key={index}>{i.map((u,index) => <p key={index}>{u}</p>)}</div>
                     })}
                 </div>
             </div>
@@ -61,14 +61,14 @@ const Footer = () => {
 
             <div className="footer-other-product">
                 <p>Dow Jones Products</p>
-                {dataFooterProductsTwo.map(i => <p>{i}</p>)}
+                {dataFooterProductsTwo.map((i,index )=> <p key={index}>{i}</p>)}
             </div>
             <div className="footer-other-product-two">
-                {dataFooterProductsTwo.map(i => <p>{i}</p>)}
+                {dataFooterProductsTwo.map((i,index )=> <p key={index}>{i}</p>)}
             </div>
             <div className="footer-terms-outer">
                 <div className="footer-terms">
-                    {dataFooterTerms.map(i => <p>{i}</p>)}
+                    {dataFooterTerms.map((i,index )=> <p key={index}>{i}</p>)}
                 </div>
 
             </div>

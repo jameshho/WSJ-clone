@@ -1,8 +1,7 @@
 import React from 'react'
-import { getDoc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { db } from '../firebase';
-import { doc, collection, getDocs } from 'firebase/firestore';
+import { doc, collection, getDocs,getDoc } from 'firebase/firestore';
 import { ref, getDownloadURL } from 'firebase/storage';
 import { storage } from '../firebase';
 
