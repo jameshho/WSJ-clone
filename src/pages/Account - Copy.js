@@ -3,7 +3,6 @@ import { UserAuth } from '../context/AuthContext';
 import { listAll, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 import { storage } from '../firebase';
-import { BsTrash } from 'react-icons/bs';
 
 
 import { db } from '../firebase';
@@ -57,15 +56,13 @@ const Account = () => {
             const imageRef = ref(storage, `articleImages/${imageUpload.name}`);
             const snapshot = await uploadBytes(imageRef, imageUpload)
             await addDoc(usersCollectionRef, formData)
-
+            
 
             setImageUpload(null)
-            setFormData(prev => {
-                return {
-                    ...prev,
-                    writerTwo: "",
-                    content: ""
-                }
+            setFormData(prev=>{
+                return {...prev,
+                writerTwo:"",
+                content:""}
             })
             // await alert('task complete!')
 
@@ -78,95 +75,8 @@ const Account = () => {
 
     return (
 
-        <div className='new-article'>
-            <div className="new-article-container">
-                <div className="new-article-form">
-                    <div className="article-form-tips">
-                        <h2 className='new-article-form-greet'>Hey Jimmy, it's time to submit your article!</h2>
-                        <p className='new-article-form-wrong'>Not <span>Jimmy</span>? Sign in to your account <span>here</span>.</p>
-
-                    </div>
-
-                    <div className='upload-status'>
-                        <p>Compose Article</p>
-                        <p>Supply Article Details</p>
-                        <p>Review and Submit</p>
-                        <p className='upload-status-absolute'>Step: 1/3</p>
-                    </div>
-                    <h1>Compose Article</h1>
-                    <p className='compose-description'>Please complete your article and attach relevant images. </p>
-                    <label>Featured Image</label>
-                    <div className="new-article-image">
-                        <img src="/images/im-716069-apple.jfif" />
-                        <p className='image-position-absolute'>im-716069-apple.jfif</p>
-
-                        <BsTrash size="1.5rem" className='trash-icon-absolute' />
-                    </div>
-                    <button className='add-img-button'>Add More Image</button>
-                    <label>Title</label>
-                    <input type="text" />
-                    <label>Summary</label>
-
-                    <input type="text" />
-                    <label>Context</label>
-
-                    <textarea
-                        type="text"
-                        placeholder=''
-                        required
-                    />
-                </div>
-
-            </div>
-        </div>
-
-    )
-}
-export default Account
-
-{/* <input
-                            type="file"
-                            onChange={event => {
-                                setImageUpload(event.target.files[0])
-                                setImageFormData(event.target.files[0].name)
-                            }}
-                            required /> 
-                        <label>Title</label>
-                        <textarea
-                            type="text"
-                            value={formData.title}
-                            onChange={handleChange}
-                            name="title"
-                            placeholder='title'
-                            required
-                        />
-                        <label>Summary</label>
-                        <textarea
-                            type="text"
-                            value={formData.snippet}
-                            onChange={handleChange}
-                            name="snippet"
-                            placeholder='snippet'
-                            required
-                        />
-                        <label>Content</label>
-
-                        <textarea
-                            value={formData.content}
-                            placeholder="content"
-                            name='content'
-                            onChange={handleChange}
-                            wrap="soft"
-                            rows="12"
-                            cols="10"
-                            required
-                        />
-                        */}
-{/* </form> */ }
-
-
-
-{/* <h1>This is your account email</h1>
+        <div className='account-container'>
+            <h1>This is your account email</h1>
 
             <div>{(user) && user.providerData[0].email}</div>
             <button onClick={logout}>Sign Out</button>
@@ -213,10 +123,24 @@ export default Account
                     />
                 </div>
                 <label>Title</label>
-           
+                <textarea
+                    type="text"
+                    value={formData.title}
+                    onChange={handleChange}
+                    name="title"
+                    placeholder='title'
+                    required
+                />
                 <label>Snippet</label>
 
-         
+                <textarea
+                    type="text"
+                    value={formData.snippet}
+                    onChange={handleChange}
+                    name="snippet"
+                    placeholder='snippet'
+                    required
+                />
                 <label>Content</label>
 
                 <textarea
@@ -229,7 +153,13 @@ export default Account
                     cols="10"
                     required
                 />
-        
+                <input
+                    type="file"
+                    onChange={event => {
+                        setImageUpload(event.target.files[0])
+                        setImageFormData(event.target.files[0].name)
+                    }}
+                    required />
                 <input
                     type="text"
                     value={formData.img}
@@ -240,6 +170,10 @@ export default Account
                 />
 
                 <button>Submit</button>
-            </form> */}
+            </form>
 
+        </div>
+    )
+}
 
+export default Account
